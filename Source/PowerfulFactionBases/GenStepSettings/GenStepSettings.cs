@@ -62,6 +62,7 @@ public class GenStepSettings : Mod
 
     public override void WriteSettings()
     {
+        base.WriteSettings();
         var genStep_Settlement = (GenStep_Settlement)DefDatabase<GenStepDef>.GetNamed("Settlement").genStep;
         genStep_Settlement.count = settings.count;
     }

@@ -1,5 +1,8 @@
 # Changelog for PowerfulFactionBases
 
+1.5.1 - Changed settings are now saved correctly
+
+
 1.5.0 - First publish
 Used DeepL to update translations for ChineseSimplified, French, German, Japanese
 

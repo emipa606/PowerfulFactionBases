@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
   <OPBaseRestartWarning>新しい設定を適用するために再起動が必要</OPBaseRestartWarning>
   <OPBaseCountLabel>1つのマップ内に配置可能なNPC拠点数（デフォルトは2）</OPBaseCountLabel>

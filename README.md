@@ -1,4 +1,4 @@
-# [Powerful Faction Bases (Continued)]()
+# [Powerful Faction Bases (Continued)](https://steamcommunity.com/sharedfiles/filedetails/?id=3274807828)
 
 ![Image](https://i.imgur.com/buuPQel.png)
 
@@ -59,3 +59,5 @@ Thanks to Proxyer for Japanese translation.
 -  Use [RimSort](https://github.com/RimSort/RimSort/releases/latest) to sort your mods
 
 
+
+[![Image](https://img.shields.io/github/v/release/emipa606/PowerfulFactionBases?label=latest%20version&style=plastic&color=9f1111&labelColor=black)](https://steamcommunity.com/sharedfiles/filedetails/changelog/3274807828)
