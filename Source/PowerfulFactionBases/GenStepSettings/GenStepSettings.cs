@@ -8,50 +8,50 @@ namespace GenStepSettings;
 public class GenStepSettings : Mod
 {
     private static string currentVersion;
-    public readonly GenStepModSettings settings;
+    public readonly GenStepModSettings Settings;
 
     public GenStepSettings(ModContentPack content)
         : base(content)
     {
-        settings = GetSettings<GenStepModSettings>();
+        Settings = GetSettings<GenStepModSettings>();
         currentVersion = VersionFromManifest.GetVersionFromModMetaData(content.ModMetaData);
     }
 
     public override void DoSettingsWindowContents(Rect inRect)
     {
-        var listing_Standard = new Listing_Standard();
-        listing_Standard.Begin(inRect);
+        var listingStandard = new Listing_Standard();
+        listingStandard.Begin(inRect);
         Text.Font = GameFont.Tiny;
-        listing_Standard.Label("OPBaseRestartWarning".Translate());
-        listing_Standard.Gap();
+        listingStandard.Label("OPBaseRestartWarning".Translate());
+        listingStandard.Gap();
         Text.Font = GameFont.Small;
-        listing_Standard.Label("OPBaseCountLabel".Translate());
-        listing_Standard.Gap(4f);
-        var buffer = settings.count.ToString();
-        listing_Standard.TextFieldNumeric(ref settings.count, ref buffer, 1f);
-        listing_Standard.Gap(6f);
-        listing_Standard.Label("OPBaseSizeLabel".Translate());
-        listing_Standard.Gap(4f);
-        var buffer2 = settings.refMenuSettlementSize.ToString();
-        listing_Standard.TextFieldNumeric(ref settings.refMenuSettlementSize, ref buffer2);
-        listing_Standard.Gap(6f);
-        listing_Standard.Label("OPBaseStrengthLabel".Translate());
-        listing_Standard.Gap(4f);
-        var buffer3 = settings.refDefaultPawnsPoints.ToString();
-        listing_Standard.TextFieldNumeric(ref settings.refDefaultPawnsPoints, ref buffer3, 2000f);
-        listing_Standard.Gap(6f);
-        listing_Standard.CheckboxLabeled("VanillaMortarCountLabel".Translate(), ref settings.refVanillaMortarCount);
-        listing_Standard.Gap(6f);
-        listing_Standard.CheckboxLabeled("UseVanillaTurretLabel".Translate(), ref settings.refUseVanillaTurret);
+        listingStandard.Label("OPBaseCountLabel".Translate());
+        listingStandard.Gap(4f);
+        var buffer = Settings.Count.ToString();
+        listingStandard.TextFieldNumeric(ref Settings.Count, ref buffer, 1f);
+        listingStandard.Gap(6f);
+        listingStandard.Label("OPBaseSizeLabel".Translate());
+        listingStandard.Gap(4f);
+        var buffer2 = Settings.RefMenuSettlementSize.ToString();
+        listingStandard.TextFieldNumeric(ref Settings.RefMenuSettlementSize, ref buffer2);
+        listingStandard.Gap(6f);
+        listingStandard.Label("OPBaseStrengthLabel".Translate());
+        listingStandard.Gap(4f);
+        var buffer3 = Settings.RefDefaultPawnsPoints.ToString();
+        listingStandard.TextFieldNumeric(ref Settings.RefDefaultPawnsPoints, ref buffer3, 2000f);
+        listingStandard.Gap(6f);
+        listingStandard.CheckboxLabeled("VanillaMortarCountLabel".Translate(), ref Settings.RefVanillaMortarCount);
+        listingStandard.Gap(6f);
+        listingStandard.CheckboxLabeled("UseVanillaTurretLabel".Translate(), ref Settings.RefUseVanillaTurret);
         if (currentVersion != null)
         {
-            listing_Standard.Gap();
+            listingStandard.Gap();
             GUI.contentColor = Color.gray;
-            listing_Standard.Label("CurrentModVersionLabel".Translate(currentVersion));
+            listingStandard.Label("CurrentModVersionLabel".Translate(currentVersion));
             GUI.contentColor = Color.white;
         }
 
-        listing_Standard.End();
+        listingStandard.End();
         base.DoSettingsWindowContents(inRect);
     }
 
@@ -63,7 +63,7 @@ public class GenStepSettings : Mod
     public override void WriteSettings()
     {
         base.WriteSettings();
-        var genStep_Settlement = (GenStep_Settlement)DefDatabase<GenStepDef>.GetNamed("Settlement").genStep;
-        genStep_Settlement.count = settings.count;
+        var genStepSettlement = (GenStep_Settlement)DefDatabase<GenStepDef>.GetNamed("Settlement").genStep;
+        genStepSettlement.count = Settings.Count;
     }
 }

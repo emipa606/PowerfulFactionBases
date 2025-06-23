@@ -8,15 +8,15 @@ public class SettingsImplementer
 {
     static SettingsImplementer()
     {
-        var genStep_Settlement = (GenStep_Settlement)DefDatabase<GenStepDef>.GetNamed("Settlement").genStep;
-        genStep_Settlement.count = LoadedModManager.GetMod<GenStepSettings>().settings.count;
-        GenStep_Settlement.menuSettlementSize =
-            LoadedModManager.GetMod<GenStepSettings>().settings.refMenuSettlementSize;
-        GenStep_Settlement.defaultPawnsPoints =
-            LoadedModManager.GetMod<GenStepSettings>().settings.refDefaultPawnsPoints;
-        GenStep_Settlement.vanillaMortarCount =
-            LoadedModManager.GetMod<GenStepSettings>().settings.refVanillaMortarCount;
-        SymbolResolver_EdgeDefense.useVanillaTurret =
-            LoadedModManager.GetMod<GenStepSettings>().settings.refUseVanillaTurret;
+        var genStepSettlement = (GenStep_Settlement)DefDatabase<GenStepDef>.GetNamed("Settlement").genStep;
+        genStepSettlement.count = LoadedModManager.GetMod<GenStepSettings>().Settings.Count;
+        GenStep_Settlement.MenuSettlementSize =
+            LoadedModManager.GetMod<GenStepSettings>().Settings.RefMenuSettlementSize;
+        GenStep_Settlement.DefaultPawnsPoints =
+            LoadedModManager.GetMod<GenStepSettings>().Settings.RefDefaultPawnsPoints;
+        GenStep_Settlement.VanillaMortarCount =
+            LoadedModManager.GetMod<GenStepSettings>().Settings.RefVanillaMortarCount;
+        SymbolResolver_EdgeDefense.UseVanillaTurret =
+            LoadedModManager.GetMod<GenStepSettings>().Settings.RefUseVanillaTurret;
     }
 }

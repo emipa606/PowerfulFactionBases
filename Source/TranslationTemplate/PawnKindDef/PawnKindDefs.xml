@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: elite defender -->
+  <EliteDefender.label>elite defender</EliteDefender.label>
+  <!-- EN: elite defenders -->
+  <EliteDefender.labelPlural>elite defenders</EliteDefender.labelPlural>
+  <!-- EN: heavy mercenary -->
+  <Mercenary_HeavyDefender.label>heavy mercenary</Mercenary_HeavyDefender.label>
+  <!-- EN: heavy mercenaries -->
+  <Mercenary_HeavyDefender.labelPlural>heavy mercenaries</Mercenary_HeavyDefender.labelPlural>
+  <!-- EN: mercenary slasher -->
+  <Mercenary_SlasherDefender.label>mercenary slasher</Mercenary_SlasherDefender.label>
+  <!-- EN: elite pirate -->
+  <PirateBossDefender.label>elite pirate</PirateBossDefender.label>
+  <!-- EN: elite pirates -->
+  <PirateBossDefender.labelPlural>elite pirates</PirateBossDefender.labelPlural>
+  <!-- EN: town guard -->
+  <Town_GuardDefender.label>town guard</Town_GuardDefender.label>
+  <!-- EN: berserker -->
+  <Tribal_BerserkerDefender.label>berserker</Tribal_BerserkerDefender.label>
+  <!-- EN: elite berserker -->
+  <Tribal_ChiefMeleeDefender.label>elite berserker</Tribal_ChiefMeleeDefender.label>
+  <!-- EN: elite archer -->
+  <Tribal_ChiefRangedDefender.label>elite archer</Tribal_ChiefRangedDefender.label>
+  <!-- EN: tornado caller -->
+  <Tribal_TornadoDefender.label>tornado caller</Tribal_TornadoDefender.label>
+  <!-- EN: tornado callers -->
+  <Tribal_TornadoDefender.labelPlural>tornado callers</Tribal_TornadoDefender.labelPlural>
+</LanguageData>

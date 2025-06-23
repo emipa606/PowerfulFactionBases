@@ -12,7 +12,7 @@ public class SymbolResolver_EdgeDefense : SymbolResolver
     private const int DefaultCellsPerTurret = 30;
 
     private const int DefaultCellsPerMortar = 75;
-    public static bool useVanillaTurret;
+    public static bool UseVanillaTurret;
 
     public override void Resolve(ResolveParams rp)
     {
@@ -144,7 +144,7 @@ public class SymbolResolver_EdgeDefense : SymbolResolver
             resolveParams4.faction = faction;
             if (rp.settlementPawnGroupPoints > 4000f)
             {
-                if (useVanillaTurret)
+                if (UseVanillaTurret)
                 {
                     var singleThingDef = DefDatabase<ThingDef>.AllDefsListForReading.Where(x =>
                         x.category == ThingCategory.Building &&

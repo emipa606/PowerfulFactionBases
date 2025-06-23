@@ -18,7 +18,7 @@ public class JobGiver_TakeCombatLuciferium : ThinkNode_JobGiver
             return null;
         }
 
-        var thing = FindLuciferium(pawn);
+        var thing = findLuciferium(pawn);
         if (thing != null)
         {
             return new Job(JobDefOf.Ingest, thing)
@@ -29,7 +29,7 @@ public class JobGiver_TakeCombatLuciferium : ThinkNode_JobGiver
 
         thing = GenClosest.ClosestThingReachable(pawn.Position, pawn.Map,
             ThingRequest.ForGroup(ThingRequestGroup.HaulableAlways), PathEndMode.OnCell,
-            TraverseParms.For(pawn), 10f, Validator);
+            TraverseParms.For(pawn), 10f, validator);
         if (thing == null)
         {
             return null;
@@ -40,14 +40,14 @@ public class JobGiver_TakeCombatLuciferium : ThinkNode_JobGiver
             count = 1
         };
 
-        bool Validator(Thing t)
+        bool validator(Thing t)
         {
             return t.def.defName.Equals("Luciferium") && t.IngestibleNow && pawn.RaceProps.CanEverEat(t) &&
                    pawn.CanReserve(t);
         }
     }
 
-    private Thing FindLuciferium(Pawn pawn)
+    private static Thing findLuciferium(Pawn pawn)
     {
         foreach (var thing in pawn.inventory.innerContainer)
         {

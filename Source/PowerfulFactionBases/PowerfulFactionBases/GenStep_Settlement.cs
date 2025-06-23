@@ -11,11 +11,11 @@ public class GenStep_Settlement : GenStep_Scatterer
 {
     private static readonly List<IntVec3> tmpCandidates = [];
 
-    public static int menuSettlementSize;
+    public static int MenuSettlementSize;
 
-    public static bool vanillaMortarCount;
+    public static bool VanillaMortarCount;
 
-    public static float defaultPawnsPoints;
+    public static float DefaultPawnsPoints;
 
     public override int SeedPart => 1806208471;
 
@@ -41,8 +41,8 @@ public class GenStep_Settlement : GenStep_Scatterer
             return false;
         }
 
-        var num = menuSettlementSize;
-        if (menuSettlementSize < map.Size.x - 20 && menuSettlementSize >= 35)
+        var num = MenuSettlementSize;
+        if (MenuSettlementSize < map.Size.x - 20 && MenuSettlementSize >= 35)
         {
             return new CellRect(c.x - (num / 2), c.z - (num / 2), num, num).FullyContainedWithin(new CellRect(0, 0,
                 map.Size.x, map.Size.z));
@@ -57,9 +57,9 @@ public class GenStep_Settlement : GenStep_Scatterer
 
     protected override void ScatterAt(IntVec3 c, Map map, GenStepParams parms, int stackCount = 1)
     {
-        var floatRange = new FloatRange(defaultPawnsPoints - 500f, defaultPawnsPoints + 500f);
-        var num = menuSettlementSize;
-        var num2 = menuSettlementSize;
+        var floatRange = new FloatRange(DefaultPawnsPoints - 500f, DefaultPawnsPoints + 500f);
+        var num = MenuSettlementSize;
+        var num2 = MenuSettlementSize;
         var rect = new CellRect(c.x - (num / 2), c.z - (num2 / 2), num, num2);
         var faction = map.ParentFaction != null && map.ParentFaction != Faction.OfPlayer
             ? map.ParentFaction
@@ -70,9 +70,9 @@ public class GenStep_Settlement : GenStep_Scatterer
         resolveParams.faction = faction;
         resolveParams.settlementPawnGroupPoints = floatRange.RandomInRange;
         resolveParams.edgeDefenseWidth = 4;
-        resolveParams.edgeDefenseTurretsCount = Mathf.RoundToInt((float)menuSettlementSize / 5);
+        resolveParams.edgeDefenseTurretsCount = Mathf.RoundToInt((float)MenuSettlementSize / 5);
         resolveParams.edgeDefenseMortarsCount =
-            vanillaMortarCount ? 2 : Mathf.RoundToInt((float)menuSettlementSize / 20);
+            VanillaMortarCount ? 2 : Mathf.RoundToInt((float)MenuSettlementSize / 20);
 
         BaseGen.globalSettings.map = map;
         BaseGen.globalSettings.minBuildings = 1;
@@ -88,18 +88,18 @@ public class GenStep_Settlement : GenStep_Scatterer
         BaseGen.Generate();
         if (faction != null && faction == Faction.OfEmpire && BaseGen.globalSettings.landingPadsGenerated == 0)
         {
-            GenerateLandingPadNearby(resolveParams.rect, map, faction);
+            generateLandingPadNearby(resolveParams.rect, map, faction);
         }
 
         BaseGen.Generate();
     }
 
-    public static void GenerateLandingPadNearby(CellRect rect, Map map, Faction faction)
+    private static void generateLandingPadNearby(CellRect rect, Map map, Faction faction)
     {
         var resolveParams = default(ResolveParams);
         MapGenerator.TryGetVar<List<CellRect>>("UsedRects", out var usedRects);
         tmpCandidates.Clear();
-        var size = 9;
+        const int size = 9;
         tmpCandidates.Add(new IntVec3(rect.maxX + 1, 0, rect.CenterCell.z));
         tmpCandidates.Add(new IntVec3(rect.minX - size, 0, rect.CenterCell.z));
         tmpCandidates.Add(new IntVec3(rect.CenterCell.x, 0, rect.maxZ + 1));

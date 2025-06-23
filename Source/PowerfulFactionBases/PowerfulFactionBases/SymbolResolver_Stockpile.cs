@@ -16,7 +16,7 @@ public class SymbolResolver_Stockpile : SymbolResolver
         var map = BaseGen.globalSettings.map;
         if (rp.stockpileConcreteContents != null)
         {
-            CalculateFreeCells(rp.rect, 0f);
+            calculateFreeCells(rp.rect, 0f);
             var num = 0;
             var num2 = rp.stockpileConcreteContents.Count - 1;
             while (num2 >= 0 && num < cells.Count)
@@ -38,7 +38,7 @@ public class SymbolResolver_Stockpile : SymbolResolver
             return;
         }
 
-        CalculateFreeCells(rp.rect, FreeCellsFraction);
+        calculateFreeCells(rp.rect, FreeCellsFraction);
         var thingSetMakerDef = rp.thingSetMakerDef ?? ThingSetMakerDefOf.MapGen_DefaultStockpile;
         var thingSetMakerParams = rp.thingSetMakerParams;
         ThingSetMakerParams value;
@@ -58,7 +58,7 @@ public class SymbolResolver_Stockpile : SymbolResolver
             if (rp.settlementPawnGroupPoints > 4000f)
             {
                 value.totalMarketValueRange =
-                    new FloatRange(num4, num4) * (GenStep_Settlement.defaultPawnsPoints / 250f);
+                    new FloatRange(num4, num4) * (GenStep_Settlement.DefaultPawnsPoints / 250f);
             }
             else
             {
@@ -78,7 +78,7 @@ public class SymbolResolver_Stockpile : SymbolResolver
         BaseGen.symbolStack.Push("thingSet", resolveParams);
     }
 
-    private void CalculateFreeCells(CellRect rect, float freeCellsFraction)
+    private void calculateFreeCells(CellRect rect, float freeCellsFraction)
     {
         var map = BaseGen.globalSettings.map;
         cells.Clear();
