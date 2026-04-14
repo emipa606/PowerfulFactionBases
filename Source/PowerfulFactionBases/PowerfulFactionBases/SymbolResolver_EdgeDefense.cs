@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using RimWorld;
 using RimWorld.BaseGen;
@@ -80,7 +81,7 @@ public class SymbolResolver_EdgeDefense : SymbolResolver
         if (valueOrDefault > 0)
         {
             var singlePawnLord = rp.singlePawnLord ??
-                                 LordMaker.MakeNewLord(faction, new LordJob_DefendBase(faction, rp.rect.CenterCell),
+                                 LordMaker.MakeNewLord(faction, CreateDefendBaseLordJob(faction, rp.rect.CenterCell),
                                      map);
             for (var i = 0; i < valueOrDefault; i++)
             {
@@ -168,5 +169,36 @@ public class SymbolResolver_EdgeDefense : SymbolResolver
             resolveParams4.edgeThingAvoidOtherEdgeThings = rp.edgeThingAvoidOtherEdgeThings ?? true;
             BaseGen.symbolStack.Push("edgeThing", resolveParams4);
         }
+    }
+
+    private static LordJob CreateDefendBaseLordJob(Faction faction, IntVec3 defendPoint)
+    {
+        var type = typeof(LordJob_DefendBase);
+
+        try
+        {
+            var withAggressive = Activator.CreateInstance(type, faction, defendPoint, false) as LordJob;
+            if (withAggressive != null)
+            {
+                return withAggressive;
+            }
+        }
+        catch (MissingMethodException)
+        {
+        }
+
+        try
+        {
+            var withoutAggressive = Activator.CreateInstance(type, faction, defendPoint) as LordJob;
+            if (withoutAggressive != null)
+            {
+                return withoutAggressive;
+            }
+        }
+        catch (MissingMethodException)
+        {
+        }
+
+        throw new MissingMethodException("Unable to construct LordJob_DefendBase with expected constructor signatures.");
     }
 }
