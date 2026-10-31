@@ -1,48 +1,47 @@
-# GitHub Copilot Instructions for "Powerful Faction Bases (Continued)"
+# GitHub Copilot Instructions for Powerful Faction Bases (Continued) Mod
 
 ## Mod Overview and Purpose
 
-The "Powerful Faction Bases (Continued)" mod is a concept project aimed at increasing the challenge posed by NPC faction bases in RimWorld. The base game does not scale the difficulty of these bases with player strength, often making them too easy to defeat. This mod enhances the existing faction bases by introducing stronger defenders and other challenges, creating an optional end-game experience for players seeking a formidable test of their skills. The bases become sprawling fortresses requiring significant effort and strategy to overcome.
+Powerful Faction Bases (Continued) is an update to the NilchEis mod. The mod aims to increase the difficulty of attacking NPC faction bases by making them more formidable. This mod does not add any new overpowered items for enemies but instead increases the strength of the units that defend vanilla NPC bases. The mod also adds new powerful enemy variants for vanilla factions, which will only appear as defenders and therefore won't affect raid difficulty. The mod can be safely added or removed from existing save files.
 
 ## Key Features and Systems
 
-- **Enemy Strength Scaling**: Significantly increased strength of enemy pawns defending the bases, offering a greater challenge without adding any overpowered items.
-- **Powerful Enemy Variants**: Introduces new, stronger enemy variants exclusive to defending these bases, ensuring the game's raid difficulty remains unaffected.
-- **Customizable Base Sizes and Defenses**: Mod settings allow players to adjust the size of NPC settlements and types of turrets they can use, tailoring the difficulty.
-- **Adjustable Settlement Count**: Players can set the number of enemy settlements on a map, influencing enemy numbers and further adjusting the challenge level.
+- More enemy pawns defending their settlements.
+- Adds new powerful enemy variants for vanilla factions.
+- Removed limitation on types of turrets that can be used by NPC settlements.
+- Can change size of NPC settlements from the mod settings.
+- Change the number of enemy settlements in single map via mod settings.
 
 ## Coding Patterns and Conventions
 
-- **Class Definitions**: Each class is defined with clear, purpose-specific names, such as `GenStepModSettings`, `SettingsImplementer`, and `SymbolResolver_EdgeDefense`, to ensure clarity and maintainability.
-- **Namespace Usage**: Ensure proper namespace usage to organize classes systematically, especially as the mod evolves and introduces more classes and features.
-- **Method Structure**: Follow the C# convention of camelCase for private and local method names, while public methods start with a capitalized letter.
-- **Comments**: Maintain thorough inline comments for method logic and specific algorithmic choices to aid future modifications and Copilot's understanding.
+- Use meaningful variable and method names.
+- Follow the RimWorld coding conventions.
+- Use comments to explain complex logic.
+- Use proper error handling.
+- Write unit tests for your code.
 
 ## XML Integration
 
-- **Data Definitions**: Integrate XML for data definitions to specify NPC characteristics, settlement layouts, and other configuration parameters.
-- **Mod Settings**: Leverage the RimWorld mod settings XML to offer users in-game customization options, as established in `GenStepSettings.cs`.
-- **Translation Support**: Use XML to manage translations, ensuring wide accessibility and support for languages such as Japanese, contributed by community members.
+- Use XML files to define mod settings and game entities.
+- Use the `Defs` directory to store XML files.
+- Use the `Patches` directory to store Harmony patch files.
+- Use the `thingDef`, `pawnKindDef`, `dutyDef`, and `mapGeneratorDef` tags to define entities.
+- Use the `kindDef` tag to define enemy kinds.
 
 ## Harmony Patching
 
-- **Patch Application**: Use Harmony to apply patches to the vanilla game's code, ensuring seamless integration of new features like increased defender strength and revised settlement rules.
-- **Patch Organization**: Organize patches into a structured folder system and apply them conditionally, ensuring compatibility and ease of debugging.
-- **Compatibility Handling**: Proactively handle mod conflicts by checking for known incompatible mods and offering detailed documentation on potential issues.
+- Use Harmony to patch existing RimWorld code.
+- Use the `Patches.xml` file to define patches.
+- Use the `[HarmonyPatch]` attribute to define patches.
+- Use the `Transpiler` method to modify code.
 
 ## Suggestions for Copilot
 
-- **AI Assistance**: Utilize GitHub Copilot to suggest boilerplates for new classes or methods based on existing patterns within the mod, such as the procedural generation logic used in `GenStep_Settlement`.
-- **Patch Recommendations**: Employ Copilot to propose ideal methods and property patches, especially where enemy scaling or base customization requires nuanced changes.
-- **Mod Extensions**: Let Copilot suggest improvements or extensions based on similar mods and community trends, keeping the project innovative and engaging.
-
-## Additional Notes
-
-- Always ensure to test mod changes with minimal setup, slowly integrating other mods to pinpoint compatibility issues.
-- Regularly update the mod’s GitHub repository with error solutions and improvements contributed by community testers.
-- Use communication channels for feedback, like Discord, to gather user experience reports, enhancing mod quality and player satisfaction. 
-
-By following these guidelines and utilizing features like Copilot, mod development can be streamlined, innovative, and aligned with player expectations for immersive experiences in RimWorld.
+- Use Copilot to generate XML files for new game entities.
+- Use Copilot to generate Harmony patches for existing RimWorld code.
+- Use Copilot to generate unit tests for your code.
+- Use Copilot to generate code snippets for complex logic.
+- Use Copilot to generate code comments for your code.
 
 ## Project Solution Guidelines
 - Relevant mod XML files are included as Solution Items under the solution folder named XML, these can be read and modified from within the solution.
@@ -51,3 +50,11 @@ By following these guidelines and utilizing features like Copilot, mod developme
 - When making functional changes in this mod, ensure the documented features stay in sync with implementation; use the in-solution `.github` copy as the primary file.
 - In the solution is also a project called Assembly-CSharp, containing a read-only version of the decompiled game source, for reference and debugging purposes.
 - For any new documentation, update this copilot-instructions.md file rather than creating separate documentation files.
+
+
+## Hard rules (must follow)
+- Do NOT run commands that modify the repo (no git commit, git apply, dotnet format) unless explicitly asked.
+- Prefer minimal reads: read only the smallest code region needed (around the suspicious lines).
+- When mentioning SonarQube issues, automatically use the SonarQube MCP service to fetch and address issues instead of making inferred fixes without querying SonarQube first.
+- When mentioning the rimworld log, automatically use the Rimworld MCP service to fetch the log.
+

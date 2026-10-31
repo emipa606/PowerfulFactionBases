@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using RimWorld;
 using RimWorld.BaseGen;
 using UnityEngine;
@@ -44,7 +45,7 @@ public class SymbolResolver_Stockpile : SymbolResolver
         ThingSetMakerParams value;
         if (thingSetMakerParams.HasValue)
         {
-            value = rp.thingSetMakerParams.Value;
+            value = rp.thingSetMakerParams!.Value;
         }
         else
         {
@@ -82,12 +83,9 @@ public class SymbolResolver_Stockpile : SymbolResolver
     {
         var map = BaseGen.globalSettings.map;
         cells.Clear();
-        foreach (var item in rect)
+        foreach (var item in rect.Where(item => item.Standable(map) && item.GetFirstItem(map) == null))
         {
-            if (item.Standable(map) && item.GetFirstItem(map) == null)
-            {
-                cells.Add(item);
-            }
+            cells.Add(item);
         }
 
         var num = (int)(freeCellsFraction * cells.Count);

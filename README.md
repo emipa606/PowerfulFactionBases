@@ -60,4 +60,4 @@ Thanks to Proxyer for Japanese translation.
 
  
 
-[![Image](https://img.shields.io/github/v/release/emipa606/PowerfulFactionBases?label=latest%20version&style=plastic&color=9f1111&labelColor=black)](https://steamcommunity.com/sharedfiles/filedetails/changelog/3274807828) | tags: end-game challenge
+[![Image](https://img.shields.io/github/v/release/emipa606/PowerfulFactionBases?label=latest%20version&style=plastic&color=9f1111&labelColor=black)](https://steamcommunity.com/sharedfiles/filedetails/changelog/3274807828) | end-game challenge

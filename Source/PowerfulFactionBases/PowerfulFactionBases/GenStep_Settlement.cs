@@ -19,24 +19,24 @@ public class GenStep_Settlement : GenStep_Scatterer
 
     public override int SeedPart => 1806208471;
 
-    protected override bool CanScatterAt(IntVec3 c, Map map)
+    protected override bool CanScatterAt(IntVec3 loc, Map map)
     {
-        if (!base.CanScatterAt(c, map))
+        if (!base.CanScatterAt(loc, map))
         {
             return false;
         }
 
-        if (!c.Standable(map))
+        if (!loc.Standable(map))
         {
             return false;
         }
 
-        if (c.Roofed(map))
+        if (loc.Roofed(map))
         {
             return false;
         }
 
-        if (!map.reachability.CanReachMapEdge(c, TraverseParms.For(TraverseMode.PassDoors)))
+        if (!map.reachability.CanReachMapEdge(loc, TraverseParms.For(TraverseMode.PassDoors)))
         {
             return false;
         }
@@ -44,23 +44,23 @@ public class GenStep_Settlement : GenStep_Scatterer
         var num = MenuSettlementSize;
         if (MenuSettlementSize < map.Size.x - 20 && MenuSettlementSize >= 35)
         {
-            return new CellRect(c.x - (num / 2), c.z - (num / 2), num, num).FullyContainedWithin(new CellRect(0, 0,
+            return new CellRect(loc.x - (num / 2), loc.z - (num / 2), num, num).FullyContainedWithin(new CellRect(0, 0,
                 map.Size.x, map.Size.z));
         }
 
         Log.Message("set settlement size is either too big or too small");
         num = 50;
 
-        return new CellRect(c.x - (num / 2), c.z - (num / 2), num, num).FullyContainedWithin(new CellRect(0, 0,
+        return new CellRect(loc.x - (num / 2), loc.z - (num / 2), num, num).FullyContainedWithin(new CellRect(0, 0,
             map.Size.x, map.Size.z));
     }
 
-    protected override void ScatterAt(IntVec3 c, Map map, GenStepParams parms, int stackCount = 1)
+    protected override void ScatterAt(IntVec3 loc, Map map, GenStepParams parms, int count = 1)
     {
         var floatRange = new FloatRange(DefaultPawnsPoints - 500f, DefaultPawnsPoints + 500f);
         var num = MenuSettlementSize;
         var num2 = MenuSettlementSize;
-        var rect = new CellRect(c.x - (num / 2), c.z - (num2 / 2), num, num2);
+        var rect = new CellRect(loc.x - (num / 2), loc.z - (num2 / 2), num, num2);
         var faction = map.ParentFaction != null && map.ParentFaction != Faction.OfPlayer
             ? map.ParentFaction
             : Find.FactionManager.RandomEnemyFaction();

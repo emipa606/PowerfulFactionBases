@@ -1,3 +1,4 @@
+using System.Linq;
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -49,14 +50,6 @@ public class JobGiver_TakeCombatLuciferium : ThinkNode_JobGiver
 
     private static Thing findLuciferium(Pawn pawn)
     {
-        foreach (var thing in pawn.inventory.innerContainer)
-        {
-            if (thing.def.defName.Equals("Luciferium"))
-            {
-                return thing;
-            }
-        }
-
-        return null;
+        return pawn.inventory.innerContainer.FirstOrDefault(t => t.def.defName.Equals("Luciferium"));
     }
 }

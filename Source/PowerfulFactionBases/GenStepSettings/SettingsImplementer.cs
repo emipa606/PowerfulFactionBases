@@ -4,7 +4,7 @@ using Verse;
 namespace GenStepSettings;
 
 [StaticConstructorOnStartup]
-public class SettingsImplementer
+public static class SettingsImplementer
 {
     static SettingsImplementer()
     {

@@ -85,7 +85,7 @@ public class SymbolResolver_EdgeDefense : SymbolResolver
                                      map);
             for (var i = 0; i < valueOrDefault; i++)
             {
-                var value = new PawnGenerationRequest(faction.RandomPawnKind(), faction,
+                var value = new PawnGenerationRequest(faction?.RandomPawnKind(), faction,
                     PawnGenerationContext.NonPlayer, -1, false, false, false, true, true);
                 var resolveParams = rp;
                 resolveParams.faction = faction;
@@ -177,28 +177,29 @@ public class SymbolResolver_EdgeDefense : SymbolResolver
 
         try
         {
-            var withAggressive = Activator.CreateInstance(type, faction, defendPoint, false) as LordJob;
-            if (withAggressive != null)
+            if (Activator.CreateInstance(type, faction, defendPoint, false) is LordJob withAggressive)
             {
                 return withAggressive;
             }
         }
         catch (MissingMethodException)
         {
+            // Ignore the exception and try the next constructor
         }
 
         try
         {
-            var withoutAggressive = Activator.CreateInstance(type, faction, defendPoint) as LordJob;
-            if (withoutAggressive != null)
+            if (Activator.CreateInstance(type, faction, defendPoint) is LordJob withoutAggressive)
             {
                 return withoutAggressive;
             }
         }
         catch (MissingMethodException)
         {
+            // Ignore the exception and throw a new exception below
         }
 
-        throw new MissingMethodException("Unable to construct LordJob_DefendBase with expected constructor signatures.");
+        throw new MissingMethodException(
+            "Unable to construct LordJob_DefendBase with expected constructor signatures.");
     }
 }

@@ -6,25 +6,25 @@
   <Folder Name="/.github/">
     <File Path="../.github/copilot-instructions.md" />
   </Folder>
-  <Folder Name="/XML/1.6/Defs/RuleDefs/">
-    <File Path="../1.6/Defs/RuleDefs/Rules_Complex.xml" />
-  </Folder>
-  <Folder Name="/XML/1.6/Defs/PawnKindDefs_Humanlikes/">
-    <File Path="../1.6/Defs/PawnKindDefs_Humanlikes/PawnKindDefs.xml" />
-  </Folder>
-  <Folder Name="/XML/1.6/Patches/">
-    <File Path="../1.6/Patches/Patches.xml" />
-  </Folder>
   <Folder Name="/XML/Languages/English/Keyed/">
     <File Path="../Languages/English/Keyed/ModSettings.xml" />
   </Folder>
   <Folder Name="/XML/About/">
     <File Path="../About/about.xml" />
   </Folder>
-  <Folder Name="/XML/1.6/Defs/DutyDefs/">
-    <File Path="../1.6/Defs/DutyDefs/Duties_NonPlayerHome.xml" />
+  <Folder Name="/XML/1.7/Defs/MapGeneration/">
+    <File Path="../1.7/Defs/MapGeneration/BaseFactionMapGenerator.xml" />
   </Folder>
-  <Folder Name="/XML/1.6/Defs/MapGeneration/">
-    <File Path="../1.6/Defs/MapGeneration/BaseFactionMapGenerator.xml" />
+  <Folder Name="/XML/1.7/Defs/DutyDefs/">
+    <File Path="../1.7/Defs/DutyDefs/Duties_NonPlayerHome.xml" />
+  </Folder>
+  <Folder Name="/XML/1.7/Defs/PawnKindDefs_Humanlikes/">
+    <File Path="../1.7/Defs/PawnKindDefs_Humanlikes/PawnKindDefs.xml" />
+  </Folder>
+  <Folder Name="/XML/1.7/Defs/RuleDefs/">
+    <File Path="../1.7/Defs/RuleDefs/Rules_Complex.xml" />
+  </Folder>
+  <Folder Name="/XML/1.7/Patches/">
+    <File Path="../1.7/Patches/Patches.xml" />
   </Folder>
 </Solution>
